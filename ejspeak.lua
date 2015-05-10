@@ -1,3 +1,10 @@
+-- Copyright 2014 Usmar A. Padow (amigojapan) usmpadow@gmail.com
+-- BlindOE (the operation environment, should offer something like the bash shell for blind people)
+--Load settings
+pathToSpeachSynth = "~/Downloads/espeak-1.45.04-OSX/espeak-1.45.04/speak"
+parametersToSpeachSynth="-v f5 -s 80 -f speak_this.tmp"
+Mecab_Dictionary_path="~/Downloads/mecab-jumandic-7.0-20130310/"
+
 hash_hiragana={}
 hash_hiragana_doubles={}
 hash_hiragana_doubles["じゃ"]="ja"
@@ -213,7 +220,7 @@ end
 --	return count
 --end
 --countchars(bytes(str,"utf-8"))
-local str = os.capture("mecab -d ~/Downloads/mecab-jumandic-7.0-20130310/ test.txt",true)
+str = os.capture("mecab -d " .. Mecab_Dictionary_path .. " test.txt",true)
 arr = split_by_char(str,"\r\n")
 hiragana=""
 special_case={}
@@ -324,5 +331,5 @@ local data=""
 data="[["..phonetic.."]]"
 file:write(data)
 file:close()
-os.execute("~/Downloads/espeak-1.45.04-OSX/espeak-1.45.04/speak -v f5 -s 80 -f speak_this.tmp")
+os.execute(pathToSpeachSynth .. " " .. parametersToSpeachSynth)
 --protect against shell injection(done by using temp file)
