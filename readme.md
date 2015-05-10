@@ -18,7 +18,7 @@ install lua5.1.5 on linux sudo apt-get install espeak on windows and mac downlad
 
 
 edit these 2 lines at the top of ejspeak.lua to reclect the directories on your system: 
-on links change to espeak on windows change to espeak.exe:
+on Mac it is speak on Linux change to espeak on Windows change to espeak.exe:
 
 pathToSpeachSynth = "~/Downloads/espeak-1.45.04-OSX/espeak-1.45.04/speak"
 
