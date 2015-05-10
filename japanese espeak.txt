@@ -1,0 +1,41 @@
+Hi, I am planning on building a tool to help speak speak Japanese… I will be using mecab(a tool that can convert Japanese text to hiragana) and then my tool will convert the hiragana to roman letters….   which then I plan on feeding espeak   after some conversions to…. I have successfully been able to get espeak to pronounce most Japanese syllables thru the following commands:
+here is the table of hiragana I used for reference: http://en.wikipedia.org/wiki/Hiragana#Table_of_hiragana
+あいうえお
+./speak -v en --ipa "[[a,i:,u,e,o]]”
+かきくけこ
+./speak -v es-mx --ipa "[[ka,ki:,ku,ke,ko]]”
+さしすせそ
+./speak -v es-mx --ipa "[[sa,Si:,su,se,so]]"
+たちつてと
+./speak -v es-mx --ipa "[[ta,tSi:,tsu,te,to]]"
+なにぬねの
+./speak -v es-mx --ipa "[[na ni: nu ne no]]"
+はひふへほ
+./speak -v es-mx --ipa "[[ha hi: hu he ho]]"
+まみむめも
+./speak -v es-mx --ipa "[[ma mi: mu me mo]]"
+や　ゆ　よ
+./speak -v es-mx --ipa "[[ja  ju  jo]]"
+わ　を　ん
+./speak -v es-mx --ipa "[[wa o n]]”
+がぎぐげご
+./speak -v en --ipa "[[ga,gi:,gu,ge,go]]”
+ぎゃ　ぎゅ　ぎょ
+./speak -v es-mx --ipa "[[gja  gju  gjo]]”
+ざじずぜぞ
+./speak -v en --ipa "[[za,dZi:,zu,ze,zo]]"
+じゃ　じゅ　じょ
+./speak -v es-mx --ipa "[[dZja  dZju  dZjo]]”
+だぢづでど
+./speak -v en --ipa "[[da,dZi:,zu,de,do]]"
+ぢゃ　ぢゅ　ぢょ
+./speak -v es-mx --ipa "[[dZja  dZju  dZjo]]”
+ばびぶべぼ
+./speak -v en --ipa "[[ba,bi:,bu,be,bo]]”
+びゃ　びゅ　びょ
+./speak -v es-mx --ipa "[[bja  bju  bjo]]”
+ぱぴぷぺぽ
+./speak -v en --ipa "[[pa,pi:,pu,pe,po]]”
+ぴゃ　ぴゅ　ぴょ
+./speak -v es-mx --ipa "[[pja  pju  pjo]]"
+japanese らりるれろ is difficult it is like the spanish word floruro flɔɾˈuɾɔ how do I type this in espeak phonems?  I have been able to get speak so say “floruro” properly in Spanish…   but I don’t know how to get it to speak just those individual syllables thru the command line
