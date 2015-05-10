@@ -5,7 +5,7 @@ espeakを日本語を喋らせるためのツールです。
 
 installation:
 
-first install mecab on linux just sudo apt-get install mecab on windows or mac download and install from [mecab page](https://www.mediafire.com/?bveu874fswy6pphhttp://taku910.github.io/mecab/)
+first install mecab on linux just sudo apt-get install mecab on windows or mac download and install from [mecab page](http://taku910.github.io/mecab/)
 
 
 use this mecab dictionary file [this mecab dictionary file](https://www.mediafire.com/?bveu874fswy6pph)
