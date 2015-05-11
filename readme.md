@@ -34,29 +34,31 @@ it will say the contets of test.txt
 インストールの仕方：
 
 
-リナックスではsudo apt-get install mecabをして下さい。ウインドウズかマックでは[ここからダウンロードとインストールをしてください](http://taku910.github.io/mecab/)
+リナックスではsudo apt-get install mecabをして下さい。WindowsまたはMacintoshをお使いの方は[ここからダウンロードとインストールをしてください](http://taku910.github.io/mecab/)
 
 この[mecab 辞書ファイル]をダウロードし、解凍してください。(https://www.mediafire.com/?bveu874fswy6pph)
 
-リナックスではsudo apt-get install espeak mecabをして下さい。ウインドウズかマックでは[ここからダウンロードとインストールをしてください](http://espeak.sourceforge.net)
+リナックスではsudo apt-get install espeak mecabをして下さい。WindowsまたはMacintoshをお使いの方は[ここからダウンロードとインストールをしてください](http://espeak.sourceforge.net)
 
-リナックスではsudo apt-get install lua5.1 mecabをして下さい。ウインドウズかマックでは[ここからダウンロードとインストールをしてください](http://luadist.org)
+リナックスではsudo apt-get install lua5.1 mecabをして下さい。WindowsまたはMacintoshをお使いの方は[ここからダウンロードとインストールをしてください](http://luadist.org)
 
 
-ejspeak.lua の始まりに次の二つの行を編集してください：
-
+ejspeak.luaファイルの最初の行に、以下の2つの項目を追加してください。
+ 
+1つ目　ファイル名を指定してください
 Macではspeak,Linuxではespeak,Windowsではespeak.exe
 
-フォルダーもあなたのシステムに会う用にしてください：
-
+2つ目 フォルダのパスをあなたのシステムに合わせて指定してください：
+ 
+例)
 pathToSpeachSynth = "~/Downloads/espeak-1.45.04-OSX/espeak-1.45.04/speak"
 
 Mecab_Dictionary_path="~/Downloads/mecab-jumandic-7.0-20130310/"
 
-実行の仕方：
+実行方法：
 
-test.txtを編集してくださいutf-8じゃなきゃいけないです。
+test.txt を編集してください。(エンコーディングがUTF-8であることに注意してください)
 
 Linux、MacやPowrshellでは *luaのフォルダー*/bin/lua ekspeak.lua
 
-test.txtの内容を日本語で言います
+実行すると、test.txtの内容を日本語で読み上げます。
