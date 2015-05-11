@@ -31,7 +31,7 @@ edit test.txt, must be utf-8 encoding.
 Linux Mac and Powrshell *path to lua*/bin/lua ekspeak.lua
 it will say the contets of test.txt
 
-インストールの仕方：
+インストールの方法：
 
 
 リナックスではsudo apt-get install mecabをして下さい。WindowsまたはMacintoshをお使いの方は[ここからダウンロードとインストールをしてください](http://taku910.github.io/mecab/)
