@@ -54,6 +54,9 @@ pathToSpeachSynth = "~/Downloads/espeak-1.45.04-OSX/espeak-1.45.04/speak"
 Mecab_Dictionary_path="~/Downloads/mecab-jumandic-7.0-20130310/"
 
 実行の仕方：
+
 test.txtを編集してくださいutf-8じゃなきゃいけないです。
+
 Linux、MacやPowrshellでは *luaのフォルダー*/bin/lua ekspeak.lua
+
 test.txtの内容を日本語で言います
