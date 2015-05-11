@@ -2,19 +2,20 @@
 A project to make espeak speak Japanese
 
 espeakを日本語を喋らせるためのツールです。
+日本語の説明が下にあります。
 
 installation:
 
 first install mecab on linux just sudo apt-get install mecab on windows or mac download and install from [mecab page](http://taku910.github.io/mecab/)
 
 
-use this mecab dictionary file [this mecab dictionary file](https://www.mediafire.com/?bveu874fswy6pph)
-
+Download [this mecab dictionary file](https://www.mediafire.com/?bveu874fswy6pph)
+and extract it to a known folder
 
 then install espeak on linux just sudo apt-get install espeak on windows or mac download and install from [espeak page](http://espeak.sourceforge.net)
 
 
-install lua5.1.5 on linux sudo apt-get install espeak on windows and mac downlad and install LuaDist from from [LuaDist page](http://luadist.org)
+install lua5.1.5 on linux sudo apt-get install lua5.1 on windows and mac downlad and install LuaDist from from [LuaDist page](http://luadist.org)
 
 
 edit these 2 lines at the top of ejspeak.lua to reclect the directories on your system: 
@@ -29,3 +30,22 @@ running:
 edit test.txt, must be utf-8 encoding.
 Linux Mac and Powrshell *path to lua*/bin/lua ekspeak.lua
 it will say the contets of test.txt
+インストールの仕方：
+
+
+リナックスではsudo apt-get install mecabをして下さい。ウインドウズかマックでは[ここからダウンロードとインストールをしてください](http://taku910.github.io/mecab/)
+
+この[mecab 辞書ファイル]をダウロードし、解凍してください。(https://www.mediafire.com/?bveu874fswy6pph)
+
+リナックスではsudo apt-get install espeak mecabをして下さい。ウインドウズかマックでは[ここからダウンロードとインストールをしてください](http://espeak.sourceforge.net)
+
+リナックスではsudo apt-get install lua5.1 mecabをして下さい。ウインドウズかマックでは[ここからダウンロードとインストールをしてください](http://luadist.org)
+
+
+ejspeak.lua の始まりに次の二つの行を編集してください：
+Macではspeak,Linuxではespeak,Windowsではespeak.exe
+フォルダーもあなたのシステムに会う用にしてください：
+
+pathToSpeachSynth = "~/Downloads/espeak-1.45.04-OSX/espeak-1.45.04/speak"
+
+Mecab_Dictionary_path="~/Downloads/mecab-jumandic-7.0-20130310/"
