@@ -34,13 +34,13 @@ it will say the contets of test.txt
 インストールの方法：
 
 
-リナックスではsudo apt-get install mecabをして下さい。WindowsまたはMacintoshをお使いの方は[ここからダウンロードとインストールをしてください](http://taku910.github.io/mecab/)
+Linuxではsudo apt-get install mecabをして下さい。WindowsまたはMacintoshをお使いの方は[ここからダウンロードとインストールをしてください](http://taku910.github.io/mecab/)
 
 この[mecab 辞書ファイル]をダウロードし、解凍してください。(https://www.mediafire.com/?bveu874fswy6pph)
 
-リナックスではsudo apt-get install espeak mecabをして下さい。WindowsまたはMacintoshをお使いの方は[ここからダウンロードとインストールをしてください](http://espeak.sourceforge.net)
+Linuxではsudo apt-get install espeak mecabをして下さい。WindowsまたはMacintoshをお使いの方は[ここからダウンロードとインストールをしてください](http://espeak.sourceforge.net)
 
-リナックスではsudo apt-get install lua5.1 mecabをして下さい。WindowsまたはMacintoshをお使いの方は[ここからダウンロードとインストールをしてください](http://luadist.org)
+Linuxではsudo apt-get install lua5.1 mecabをして下さい。WindowsまたはMacintoshをお使いの方は[ここからダウンロードとインストールをしてください](http://luadist.org)
 
 
 ejspeak.luaファイルの最初の行に、以下の2つの項目を追加してください。
