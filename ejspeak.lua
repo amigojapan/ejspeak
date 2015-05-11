@@ -2,8 +2,8 @@
 -- BlindOE (the operation environment, should offer something like the bash shell for blind people)
 --Load settings
 pathToSpeachSynth = "~/Downloads/espeak-1.45.04-OSX/espeak-1.45.04/speak"
-parametersToSpeachSynth="-v f5 -s 80 -f speak_this.tmp"
 Mecab_Dictionary_path="~/Downloads/mecab-jumandic-7.0-20130310/"
+parametersToSpeachSynth="-v f5 -s 80 -f speak_this.tmp"
 
 hash_hiragana={}
 hash_hiragana_doubles={}
@@ -257,8 +257,6 @@ for key, value in ipairs(arr) do
 	end
 end
 print(hiragana)
---quick hack to eliminate the problem of not knowing how to make espeak say small tsu***fix later!
-hiragana=string.gsub(hiragana, "っ", "")
 --print(hiragana)
 romaji=""
 i=1
@@ -325,6 +323,19 @@ repeat
 	end
 	i=i+1	
 until  i > utf8len(hiragana)
+--Implement the sound of the small tsu
+while true do
+	start, ending =string.find(phonetic, "っ")
+	--print(start)
+	if not start then
+		break
+	end
+	--put : after the consonant after the small tsu
+	h1=string.sub(phonetic, 1, start-1)
+	h2=string.sub(phonetic, ending+1,ending+1)..":"..string.sub(phonetic, ending+2)
+	phonetic=h1..h2
+end
+--phonetic=string.gsub(phonetic, "っ", "")
 print(phonetic)
 file = io.open("speak_this.tmp","w+")
 local data=""
