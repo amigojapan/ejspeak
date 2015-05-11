@@ -36,7 +36,7 @@ it will say the contets of test.txt
 
 Linuxではsudo apt-get install mecabをして下さい。WindowsまたはMacintoshをお使いの方は[ここからダウンロードとインストールをしてください](http://taku910.github.io/mecab/)
 
-この[mecab 辞書ファイル]をダウロードし、解凍してください。(https://www.mediafire.com/?bveu874fswy6pph)
+このmecab 辞書ファイル]をダウロードし[、解凍してください。[ここからダウンロードとインストールをしてください](https://www.mediafire.com/?bveu874fswy6pph)
 
 Linuxではsudo apt-get install espeak mecabをして下さい。WindowsまたはMacintoshをお使いの方は[ここからダウンロードとインストールをしてください](http://espeak.sourceforge.net)
 
