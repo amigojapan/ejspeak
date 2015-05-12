@@ -1,9 +1,10 @@
 -- Copyright 2014 Usmar A. Padow (amigojapan) usmpadow@gmail.com
 -- BlindOE (the operation environment, should offer something like the bash shell for blind people)
 --Load settings
-pathToSpeachSynth = "~/Downloads/espeak-1.45.04-OSX/espeak-1.45.04/speak"
-Mecab_Dictionary_path="~/Downloads/mecab-jumandic-7.0-20130310/"
-parametersToSpeachSynth="-v f5 -s 80 -f speak_this.tmp"
+require "settings"
+--pathToSpeachSynth = "~/Downloads/espeak-1.45.04-OSX/espeak-1.45.04/speak"
+--Mecab_Dictionary_path="~/Downloads/mecab-jumandic-7.0-20130310/"
+--parametersToSpeachSynth="-v f5 -s 80 -f speak_this.tmp"
 
 hash_hiragana={}
 hash_hiragana_doubles={}
@@ -177,7 +178,12 @@ hash_phonems["じ"]="dZi:"
 hash_phonems["ず"]="zu"
 hash_phonems["ぜ"]="ze"
 hash_phonems["ぞ"]="zo"
-hash_phonems["。"]="."
+hash_phonems["。"]=""
+hash_phonems["、"]=""--fix later
+hash_phonems["（"]=""
+hash_phonems["）"]=""
+--hash_phonems["「"]=""
+--hash_phonems["」"]=""
 hash_phonems["　"]=" "
 function os.capture(cmd, raw)
   local f = assert(io.popen(cmd, 'r'))
