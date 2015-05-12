@@ -4,6 +4,10 @@ A project to make espeak speak Japanese
 espeakを日本語を喋らせるためのツールです。
 日本語の説明が下にあります。
 
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=https://youtu.be/LxMtcQlHha4
+" target="_blank"><img src="http://img.youtube.com/vi/LxMtcQlHha4/0.jpg" 
+alt="video demo of ejspeak" width="240" height="180" border="10" /></a>
+
 installation:
 
 first install mecab on linux just sudo apt-get install mecab on windows or mac download and install from [mecab page](http://taku910.github.io/mecab/)
