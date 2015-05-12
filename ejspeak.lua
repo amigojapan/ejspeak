@@ -23,6 +23,9 @@ hash_hiragana_doubles["ぴょ"]="pyo"
 hash_hiragana_doubles["ちゃ"]="Si:a"
 hash_hiragana_doubles["ちゅ"]="Si:u"
 hash_hiragana_doubles["ちょ"]="Si:o"
+hash_hiragana_doubles["しゃ"]="Si:a"
+hash_hiragana_doubles["しゅ"]="Si:u"
+hash_hiragana_doubles["しょ"]="Si:o"
 hash_hiragana["あ"]="a"
 hash_hiragana["い"]="i"
 hash_hiragana["う"]="u"
@@ -107,6 +110,12 @@ hash_phonems_doubles["ぴょ"]="pjo"
 hash_phonems_doubles["ちゃ"]="tSia"
 hash_phonems_doubles["ちゅ"]="tSiu"
 hash_phonems_doubles["ちょ"]="tSio"
+hash_phonems_doubles["しゃ"]="Si:a"
+hash_phonems_doubles["しゅ"]="Si:u"
+hash_phonems_doubles["しょ"]="Si:o"
+hash_phonems_doubles["きゃ"]="kja"
+hash_phonems_doubles["きゃ"]="kju"
+hash_phonems_doubles["きょ"]="kjo"
 hash_phonems["あ"]="a"
 hash_phonems["い"]="i:"
 hash_phonems["う"]="u"
@@ -182,9 +191,19 @@ hash_phonems["。"]=""
 hash_phonems["、"]=""--fix later
 hash_phonems["（"]=""
 hash_phonems["）"]=""
---hash_phonems["「"]=""
---hash_phonems["」"]=""
+hash_phonems["「"]=""
+hash_phonems["」"]=""
 hash_phonems["　"]=" "
+hash_phonems["0"]="ze*o"
+hash_phonems["1"]="itSi:"
+hash_phonems["2"]="ni:"
+hash_phonems["3"]="san"
+hash_phonems["4"]="Si:"
+hash_phonems["5"]="go"
+hash_phonems["6"]="*oku"
+hash_phonems["7"]="Si:tSi:"
+hash_phonems["8"]="hatSi:"
+hash_phonems["9"]="ku"
 function os.capture(cmd, raw)
   local f = assert(io.popen(cmd, 'r'))
   local s = assert(f:read('*a'))
@@ -311,7 +330,8 @@ repeat
 		r="e"
 	else
 		r=hash_phonems[jp_char]
-		if 	jp_char=="ぎ" or jp_char=="じ" or jp_char=="ぢ" or jp_char=="び" or jp_char=="ぴ" or jp_char=="ち" then
+		if 	jp_char=="ぎ" or jp_char=="じ" or jp_char=="ぢ" or jp_char=="び" or jp_char=="ぴ" or jp_char=="ち"  or jp_char=="し" or jp_char=="き" then
+			
 			jp_char=jp_char..get_jp_char(hiragana,i+1)
 			--print("here:"..jp_char.."|")
 		end
