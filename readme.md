@@ -1,11 +1,11 @@
-## ejspeak
+## ejspeak alpha
 A project to make espeak speak Japanese
 
 espeakを日本語を喋らせるためのツールです。
 日本語の説明が下にあります。
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=LxMtcQlHha4
-" target="_blank"><img src="http://img.youtube.com/vi/LxMtcQlHha4/0.jpg" 
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=ixYcMDkbw10
+" target="_blank"><img src="http://img.youtube.com/vi/ixYcMDkbw10/0.jpg" 
 alt="video demo of ejspeak" width="240" height="180" border="10" /></a>
 
 installation:
