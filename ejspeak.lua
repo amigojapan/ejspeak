@@ -321,8 +321,9 @@ hash_phonems["ジ"]="dZi"
 hash_phonems["ズ"]="zu"
 hash_phonems["ゼ"]="ze"
 hash_phonems["ゾ"]="zo"
+hash_phonems["ー"]=":"
 hash_phonems["。"]="]].[["
-hash_phonems["、"]="]],[["--fix later
+hash_phonems["、"]="]],[["--fix later(done)
 hash_phonems["（"]=""
 hash_phonems["）"]=""
 hash_phonems["「"]=""
@@ -332,13 +333,34 @@ hash_phonems["0"]="ze*o"
 hash_phonems["1"]="itSi"
 hash_phonems["2"]="ni"
 hash_phonems["3"]="san"
-hash_phonems["4"]="Si"
+hash_phonems["4"]="jon"
 hash_phonems["5"]="go"
 hash_phonems["6"]="*oku"
-hash_phonems["7"]="SitSi"
+hash_phonems["7"]="nana"
 hash_phonems["8"]="hatSi"
 hash_phonems["9"]="ku"
----**add Katakana
+hash_phonems["０"]="ze*o"
+hash_phonems["１"]="itSi"
+hash_phonems["２"]="ni"
+hash_phonems["３"]="san"
+hash_phonems["４"]="jon"
+hash_phonems["５"]="go"
+hash_phonems["６"]="*oku"
+hash_phonems["７"]="nana"
+hash_phonems["８"]="hatSi"
+hash_phonems["９"]="ku"
+hash_phonems["零"]="ze*o"
+hash_phonems["一"]="itSi"
+hash_phonems["二"]="ni"
+hash_phonems["三"]="san"
+hash_phonems["四"]="jon"
+hash_phonems["五"]="go"
+hash_phonems["六"]="*oku"
+hash_phonems["七"]="nana"
+hash_phonems["八"]="hatSi"
+hash_phonems["九"]="ku"
+
+---add Katakana(done)
 function os.capture(cmd, raw)
   local f = assert(io.popen(cmd, 'r'))
   local s = assert(f:read('*a'))
@@ -351,7 +373,7 @@ function os.capture(cmd, raw)
 end
 
 
-str = os.capture("mecab -d " .. Mecab_Dictionary_path .. " test.txt",true)
+str = os.capture(pathToMecab.. " -d " .. Mecab_Dictionary_path .. " test.txt",true)
 arr = split_by_char(str,"\r\n")
 hiragana=""
 special_case={}

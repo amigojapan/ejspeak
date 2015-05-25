@@ -22,12 +22,13 @@ then install espeak on linux just sudo apt-get install espeak on windows or mac 
 install lua5.1.5 on linux sudo apt-get install lua5.1 on windows and mac downlad and install LuaDist from from [LuaDist page](http://luadist.org)
 
 
-edit these 2 lines at the top of settings.lua to reclect the directories on your system: 
+edit these lines at the top of settings.lua to reclect the directories on your system: 
 on Mac it is speak on Linux change to espeak on Windows change to espeak.exe:
 
 pathToSpeachSynth = "~/Downloads/espeak-1.45.04-OSX/espeak-1.45.04/speak"
-
+pathToMecab="/usr/local/bin/mecab"
 Mecab_Dictionary_path="~/Downloads/mecab-jumandic-7.0-20130310/"
+
 
 
 running:
@@ -52,11 +53,11 @@ settings.luaファイルの最初の行に、以下の2つの項目を追加し�
 1つ目　ファイル名を指定してください
 Macではspeak,Linuxではespeak,Windowsではespeak.exe
 
-2つ目 フォルダのパスをあなたのシステムに合わせて指定してください：
+フォルダのパスをあなたのシステムに合わせて指定してください：
  
 例)
 pathToSpeachSynth = "~/Downloads/espeak-1.45.04-OSX/espeak-1.45.04/speak"
-
+pathToMecab="/usr/local/bin/mecab"
 Mecab_Dictionary_path="~/Downloads/mecab-jumandic-7.0-20130310/"
 
 実行方法：
