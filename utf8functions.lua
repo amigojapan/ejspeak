@@ -21,6 +21,9 @@ function utf8len(str)
 	return length
 end
 function contains_CJK(str)
+	if str==nil then
+		return nil
+	end
 	useless,length=string.gsub(str, "[%z\194-\244][\128-\191]*", "")
 	if length>0 then
 		return true

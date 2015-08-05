@@ -1,11 +1,14 @@
 -- Copyright 2014 Usmar A. Padow (amigojapan) usmpadow@gmail.com
 -- BlindOE (the operation environment, should offer something like the bash shell for blind people)
+--stupid lua
+package.path=package.path..";/Users/amigojapan/Documents/ejspeak/ejspeak/?.lua"--add path to ejspeak
 --Load settings
-require "settings"
+require "ejssettings"
 --utf8 fuctions
 require("utf8functions")
---pathToSpeachSynth = "~/Downloads/espeak-1.45.04-OSX/espeak-1.45.04/speak"
---Mecab_Dictionary_path="~/Downloads/mecab-jumandic-7.0-20130310/"
+pathToSpeachSynth = "/Users/amigojapan/Downloads/espeak-1.45.04-OSX/espeak-1.45.04/speak"
+pathToMecab="mecab"--maybe on some systems should be full path to binary
+Mecab_Dictionary_path="/Users/amigojapan/Downloads/mecab-jumandic-7.0-20130310/"
 --parametersToSpeachSynth="-v f5 -s 80 -f speak_this.tmp"
 function safe_speak(text,lang)
 	print(text)
@@ -373,47 +376,54 @@ function os.capture(cmd, raw)
 end
 
 
-str = os.capture(pathToMecab.. " -d " .. Mecab_Dictionary_path .. " test.txt",true)
+str = os.capture(pathToMecab.. " -d " .. Mecab_Dictionary_path .. " " .. arg[1].." 2>/dev/null",true)--arg[1] is the input filename , I rederect stderr to null to hide a small bug
 arr = split_by_char(str,"\r\n")
 hiragana=""
 special_case={}
 print(str)
-for key, value in ipairs(arr) do	
-	arr2 = split_by_char(value,",")
-	if not (arr2[6]==nil) then 
-		if arr2[6]=="は" and arr2[2]=="副助詞" then
-			--hiragana=hiragana.."wa" 
-			--special_case[string.len(hiragana)/3+1]=true--adjust for double bytes
-			special_case[utf8len(hiragana)+1]=true
-		elseif arr2[6]=="へ" and arr2[2]=="格助詞" then
-			--special_case[string.len(hiragana)/3+1]=true--adjust for three bytes
-			--print((string.len(hiragana))/3+1)
-			special_case[utf8len(hiragana)+1]=true
-		end
-		if arr2[6]=="*" then --HANDLE OTHER SPECIAL CASES(THIS MAY BE SOMEWHAT BUGGY)(I think I fixed the bugs, test with full hiragana***)
-			for i=1,utf8len(arr2[1])-3,1 do
-				hiragana=hiragana..get_jp_char(arr2[1],i)			
+ibo=false
+for key, value in ipairs(arr) do
+	print("value:"..value)
+	if value=="EOS" then
+		ibo=true
+	end	
+	if not ibo then
+		arr2 = split_by_char(value,",")
+		if not (arr2[6]==nil) then 
+			if arr2[6]=="は" and arr2[2]=="副助詞" then
+				--hiragana=hiragana.."wa" 
+				--special_case[string.len(hiragana)/3+1]=true--adjust for double bytes
+				special_case[utf8len(hiragana)+1]=true
+			elseif arr2[6]=="へ" and arr2[2]=="格助詞" then
+				--special_case[string.len(hiragana)/3+1]=true--adjust for three bytes
+				--print((string.len(hiragana))/3+1)
+				special_case[utf8len(hiragana)+1]=true
 			end
-			if not contains_CJK(get_jp_char(arr2[1],1)) then
-				hiragana=hiragana.." "
+			if arr2[6]=="*" then --HANDLE OTHER SPECIAL CASES(THIS MAY BE SOMEWHAT BUGGY)(I think I fixed the bugs, test with full hiragana***)
+				for i=1,utf8len(arr2[1])-3,1 do
+					hiragana=hiragana..get_jp_char(arr2[1],i)			
+				end
+				if not contains_CJK(get_jp_char(arr2[1],1)) then
+					hiragana=hiragana.." "
+				end
+				print(arr2[1])
+			else
+					hiragana=hiragana..arr2[6]
+					--if get_jp_char(arr2[1],1)=="ぢ" and get_jp_char(arr2[1],2)=="づ" then
+				--	hiragana=hiragana.."づ"
+				--end
+				--if get_jp_char(arr2[1],2)=="ぴ" then
+				--	hiragana=hiragana.."ぴ"
+				--end
+				--if get_jp_char(arr2[1],2)=="ぺ" then
+				--	hiragana=hiragana.."ぺ"
+				--end			
+				--if (get_jp_char(arr2[1],2)=="ゃ" or get_jp_char(arr2[1],2)=="ゅ" or get_jp_char(arr2[1],2)=="ょ") then
+				--	hiragana=hiragana..get_jp_char(arr2[1],2)
+				--end
+				--else
+				--	hiragana=hiragana..arr2[6]
 			end
-			print(arr2[1])
-		else
-			hiragana=hiragana..arr2[6]
-			--if get_jp_char(arr2[1],1)=="ぢ" and get_jp_char(arr2[1],2)=="づ" then
-			--	hiragana=hiragana.."づ"
-			--end
-			--if get_jp_char(arr2[1],2)=="ぴ" then
-			--	hiragana=hiragana.."ぴ"
-			--end
-			--if get_jp_char(arr2[1],2)=="ぺ" then
-			--	hiragana=hiragana.."ぺ"
-			--end			
-			--if (get_jp_char(arr2[1],2)=="ゃ" or get_jp_char(arr2[1],2)=="ゅ" or get_jp_char(arr2[1],2)=="ょ") then
-			--	hiragana=hiragana..get_jp_char(arr2[1],2)
-			--end
-			--else
-			--	hiragana=hiragana..arr2[6]
 		end
 	end
 end
@@ -510,7 +520,7 @@ repeat
 				i=i+1
 				jp_char=get_jp_char(hiragana,i)
 				--print(hiragana)
-			until contains_CJK(jp_char) 
+			until contains_CJK(jp_char) or contains_CJK(jp_char)==nil--this brakes if there is a japanese character or the last characters are english 
 			--print("english:"..english)
 			safe_speak(english,"en")
 			english=""

@@ -4,6 +4,8 @@ function getch_unix()
         os.execute("stty -cbreak </dev/tty >/dev/tty 2>&1");
         return(key);---***instead of this, do the same as in the windows script, and append the key to KeyBuffer.txt
 while true do
+	--c# program echos the input lua captures the output
+	
 	--***wait a certain ammount of time not to access the file system constantly maybe .25 seconds
 	--***add checking for unixy system, I think this can be done by just checking to see if /dev/tty exists on the system
 	--if so do it the unix way getch_unix()

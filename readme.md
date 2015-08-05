@@ -56,6 +56,7 @@ Macではspeak,Linuxではespeak,Windowsではespeak.exe
 フォルダのパスをあなたのシステムに合わせて指定してください：
  
 例)
+
 pathToSpeachSynth = "~/Downloads/espeak-1.45.04-OSX/espeak-1.45.04/speak"
 pathToMecab="/usr/local/bin/mecab"
 Mecab_Dictionary_path="~/Downloads/mecab-jumandic-7.0-20130310/"
