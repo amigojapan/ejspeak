@@ -6,9 +6,9 @@ package.path=package.path..";/Users/amigojapan/Documents/ejspeak/ejspeak/?.lua"-
 require "ejssettings"
 --utf8 fuctions
 require("utf8functions")
-pathToSpeachSynth = "/Users/amigojapan/Downloads/espeak-1.45.04-OSX/espeak-1.45.04/speak"
-pathToMecab="mecab"--maybe on some systems should be full path to binary
-Mecab_Dictionary_path="/Users/amigojapan/Downloads/mecab-jumandic-7.0-20130310/"
+--pathToSpeachSynth = "/Users/amigojapan/Downloads/espeak-1.45.04-OSX/espeak-1.45.04/speak"
+--pathToMecab="mecab"--maybe on some systems should be full path to binary
+--Mecab_Dictionary_path="/Users/amigojapan/Downloads/mecab-jumandic-7.0-20130310/"
 --parametersToSpeachSynth="-v f5 -s 80 -f speak_this.tmp"
 function safe_speak(text,lang)
 	print(text)
@@ -375,7 +375,13 @@ function os.capture(cmd, raw)
   return s
 end
 
+local function isnil(s)
+	return s == nil
+end
 
+print("pathToMecab"..pathToMecab)
+print("Mecab_Dictionary_path"..Mecab_Dictionary_path)
+print("arg[1]"..arg[1])
 str = os.capture(pathToMecab.. " -d " .. Mecab_Dictionary_path .. " " .. arg[1].." 2>/dev/null",true)--arg[1] is the input filename , I rederect stderr to null to hide a small bug
 arr = split_by_char(str,"\r\n")
 hiragana=""
@@ -400,8 +406,12 @@ for key, value in ipairs(arr) do
 				special_case[utf8len(hiragana)+1]=true
 			end
 			if arr2[6]=="*" then --HANDLE OTHER SPECIAL CASES(THIS MAY BE SOMEWHAT BUGGY)(I think I fixed the bugs, test with full hiragana***)
+				print("hiragana["..hiragana.."]")
+				print("arr2[1]["..arr2[1].."]")
 				for i=1,utf8len(arr2[1])-3,1 do
-					hiragana=hiragana..get_jp_char(arr2[1],i)			
+					if not isnil(get_jp_char(arr2[1],i)) then
+						hiragana=hiragana..get_jp_char(arr2[1],i)
+					end			
 				end
 				if not contains_CJK(get_jp_char(arr2[1],1)) then
 					hiragana=hiragana.." "
@@ -431,8 +441,12 @@ print("hiragana:"..hiragana)
 --print(hiragana)
 romaji=""
 i=1
+jp_char=""
 repeat
 --for i = 1, string.len(hiragana) do
+	print("hiragana2:"..hiragana)
+	print("jp_char:"..jp_char)
+	print("i:"..i)
    	jp_char=get_jp_char(hiragana,i)--warning, using this string with a string that contains non-jp chars will cause mojibakeend
 	--print(jp_char)
 	if jp_char=="は" and special_case[i] then

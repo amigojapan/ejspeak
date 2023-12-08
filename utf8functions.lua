@@ -8,14 +8,27 @@ function split_by_char(str,char)
 	return arr
 end
 function get_jp_char(jp_only_string,index)
-	local count=1
-	for uchar in string.gfind(jp_only_string, "([%z\1-\127\194-\244][\128-\191]*)") do
-		if index == count then
-			return uchar
-		end
-		count=count+1
+	if string.sub(jp_only_string,string.len(jp_only_string)-5,string.len(jp_only_string)) == "名詞" then	
+		return --jp_only_string[index]--
 	end
+	return utf8sub(jp_only_string,index,1)
 end
+	--local count=1
+	--print("jp_only_string["..jp_only_string.."]")
+	--print("local count["..count.."]")
+	--print("index["..index.."]")
+	--print("string.sub(jp_only_string,string.len(jp_only_string)-5,string.len(jp_only_string))["..string.sub(jp_only_string,string.len(jp_only_string)-5,string.len(jp_only_string)).."]")
+	--if string.sub(jp_only_string,1,7) == "english" or string.sub(jp_only_string,1,3) == "and" or string.sub(jp_only_string,1,2) == "so" or string.sub(jp_only_string,1,3) == "the" then	
+	--if string.sub(jp_only_string,string.len(jp_only_string)-5,string.len(jp_only_string)) == "名詞" then	
+	--	return --jp_only_string[index]--
+	--end
+	--for uchar in string.gfind(jp_only_string, "([%z\1-\127\194-\244][\128-\191]*)") do
+	--	if index == count then
+	--		return uchar
+	--	end
+	--	count=count+1
+	--end
+--end
 function utf8len(str)
 	useless,length=string.gsub(str, "[%z\001-\127\194-\244][\128-\191]*", "")
 	return length
@@ -29,6 +42,15 @@ function contains_CJK(str)
 		return true
 	else
 		return false
+	end
+end
+function utf8sub(str,index)
+	length = utf8.len(str)
+	local jp =""
+	for i = index, length do
+		lead = utf8.offset(str, i)
+		trail = utf8.offset(str, i+1) - 1
+		return string.sub(str, lead, trail)
 	end
 end
 --def countchars(bytelist):
