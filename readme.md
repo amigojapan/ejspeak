@@ -33,7 +33,7 @@ Mecab_Dictionary_path="~/Downloads/mecab-jumandic-7.0-20130310/"
 
 running:
 edit test.txt, must be utf-8 encoding.
-Linux Mac and Powrshell *path to lua*/bin/lua ejspeak.lua test.txt
+Linux Mac and Powrshell *path to lua*/bin/lua ejspeak.lua momotaro_no_new_line.txt
 it will say the contets of test.txt
 
 インストールの方法：
@@ -65,6 +65,6 @@ Mecab_Dictionary_path="~/Downloads/mecab-jumandic-7.0-20130310/"
 
 test.txt を編集してください。(エンコーディングがUTF-8であることに注意してください)
 
-Linux、MacやPowrshellでは *luaのフォルダー*/bin/lua ejspeak.lua test.txt
+Linux、MacやPowrshellでは *luaのフォルダー*/bin/lua ejspeak.lua momotaro_no_new_line.txt
 
 実行すると、test.txtの内容を日本語で読み上げます。
